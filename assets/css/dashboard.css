@@ -1,0 +1,228 @@
+/* Dashboard styles (RTL, responsive sidebar, dark/light theme) */
+:root{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --card-course:#f6f9ff;
+  --card-course-2:#e9f2ff;
+  --card-parent: #ffffff; /* very light parent card */
+  --card-course-border:rgba(195,155,58,0.14);
+  --card-course-accent:rgba(195,155,58,0.12);
+  --text:#1f2937;
+  --muted:#6b7280;
+  --muted-2:#9ca3af;
+  --accent:#c39b3a;
+  --accent-600:#a07825;
+  --glass: rgba(255,255,255,0.6);
+}
+:root[data-theme="dark"]{
+  --bg:#071023;
+  --card:#0f1724;
+  --card-course:#071826;
+  --card-course-2:#062733;
+  --card-parent: #0b1724; /* slightly lighter than default dark card */
+  --card-course-border:rgba(195,155,58,0.12);
+  --card-course-accent:rgba(195,155,58,0.10);
+  --text:#e6eef8;
+  --muted:#9aa6b2;
+  --muted-2:#6b7785;
+  --accent:#c39b3a;
+  --accent-600:#a07825;
+  --glass: rgba(255,255,255,0.03);
+}
+body.rtl{direction:rtl;font-family:"Cairo",sans-serif;background:var(--bg);color:var(--text);margin:0}
+.dash-shell{display:flex;min-height:100vh;transition:all .25s ease}
+.dash-sidebar{width:260px;background:var(--card);box-shadow:0 8px 30px rgba(2,6,23,0.06);padding:18px;flex-shrink:0;border-right:1px solid rgba(0,0,0,0.03)}
+.dash-sidebar .brand{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.dash-sidebar .nav{display:block;margin-top:12px}
+.dash-sidebar a{display:flex;align-items:center;padding:10px;border-radius:8px;color:var(--text);text-decoration:none;margin-bottom:6px;font-weight:500}
+.dash-sidebar a.active{background:linear-gradient(90deg,rgba(195,155,58,0.12),transparent);font-weight:700;color:var(--accent-600)}
+/* role-specific sidebar backgrounds to contrast with main content */
+:root{
+  --sidebar-owner: linear-gradient(180deg,#0b3b5a,#072235);
+  --sidebar-manager: linear-gradient(180deg,#0b4f2f,#073317);
+  --sidebar-creator: linear-gradient(180deg,#3b1053,#220733);
+  --sidebar-coach: linear-gradient(180deg,#0b5560,#032f31);
+  --sidebar-mentor: linear-gradient(180deg,#7a4b12,#3d2206);
+  --sidebar-org: linear-gradient(180deg,#0b2f5a,#071a34);
+}
+body[data-role="owner"] .dash-sidebar{background:var(--sidebar-owner);color:#fff}
+body[data-role="manager"] .dash-sidebar{background:var(--sidebar-manager);color:#fff}
+body[data-role="creator"] .dash-sidebar{background:var(--sidebar-creator);color:#fff}
+body[data-role="coach"] .dash-sidebar{background:var(--sidebar-coach);color:#fff}
+body[data-role="mentor"] .dash-sidebar{background:var(--sidebar-mentor);color:#fff}
+body[data-role="org"] .dash-sidebar{background:var(--sidebar-org);color:#fff}
+body[data-role] .dash-sidebar .brand img{filter:brightness(0) invert(1);}
+.dash-sidebar .brand img{height:72px;width:auto;object-fit:contain}
+body[data-role] .dash-sidebar a{color:rgba(255,255,255,0.92)}
+body[data-role] .dash-sidebar a.active{background:rgba(255,255,255,0.08)}
+.dash-main{flex:1;padding:20px;min-height:100vh}
+.dash-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:8px}
+.dash-topbar .controls{display:flex;gap:8px;align-items:center}
+.dash-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:18px}
+.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.04);transition:transform .18s ease}
+.card:hover{transform:translateY(-4px)}
+.card h3{margin:0 0 8px 0}
+.profile{display:flex;gap:14px;align-items:center}
+.avatar{width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#eee,#ddd);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--text)}
+.grid-two{display:grid;grid-template-columns:1fr 320px;gap:16px}
+.grid-two > div{min-width:0}
+.grid-two > div .card{width:100%;box-sizing:border-box}
+.course-card.card{background:linear-gradient(180deg,var(--card-course),var(--card-course-2)) !important;border:1px solid var(--card-course-border);box-shadow:0 6px 18px rgba(2,6,23,0.03), inset 0 1px 0 rgba(255,255,255,0.02);border-radius:12px;position:relative}
+.course-card.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--card-course-accent);border-top-left-radius:12px;border-bottom-left-radius:12px;opacity:0.95}
+.my-course-card.card{background:linear-gradient(180deg,var(--card-course),var(--card-course-2)) !important;padding:12px;border:1px solid var(--card-course-border);box-shadow:0 6px 18px rgba(2,6,23,0.03), inset 0 1px 0 rgba(255,255,255,0.02);border-radius:12px;position:relative}
+.my-course-card.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--card-course-accent);border-top-left-radius:12px;border-bottom-left-radius:12px;opacity:0.95}
+.btn{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;background:var(--accent);color:#fff;border:none;cursor:pointer}
+.btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--text);padding:8px 10px;border-radius:8px;cursor:pointer}
+.btn-ghost:focus{outline:2px solid rgba(0,0,0,0.06)}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:10px;text-align:right;border-bottom:1px solid rgba(0,0,0,0.04)}
+.muted{color:var(--muted)}
+.muted-2{color:var(--muted-2)}
+.toast{position:fixed;left:20px;bottom:20px;background:var(--card);padding:12px 16px;border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.12);opacity:0;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease;z-index:12000}
+.toast.visible{opacity:1;transform:none}
+.hidden{display:none}
+
+/* logo icon inside sidebar links */
+.dash-sidebar a img.nav-icon{width:26px;height:26px;border-radius:6px;object-fit:cover;margin-left:10px}
+
+/* logout button style */
+.btn-logout{background:#ef4444;color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+.btn-logout:hover{filter:brightness(.95)}
+
+/* Responsive behavior: collapse sidebar on small screens */
+@media (max-width: 900px){
+  .dash-sidebar{position:fixed;right:-320px;top:0;height:100vh;width:280px;z-index:1500;transition:right .22s ease}
+  .dash-shell.sidebar-open .dash-sidebar{right:0}
+  .dash-main{padding:16px}
+  .grid-two{grid-template-columns:1fr}
+}
+
+/* overlay when sidebar is open to avoid content showing under it */
+.dash-shell.sidebar-open::before{
+  content:"";position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:1400;pointer-events:auto;
+}
+
+@media (max-width:520px){
+  .avatar{width:52px;height:52px}
+  .dash-topbar h2{font-size:1rem}
+  .dash-cards{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+}
+
+/* small utilities */
+.center{display:flex;align-items:center;justify-content:center}
+
+#hibr-modal-overlay{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+#hibr-modal-overlay > div{max-width:720px;width:100%;padding:0}
+#hibr-modal-overlay .card{border-radius:14px;padding:18px;box-shadow:0 18px 60px rgba(2,6,23,0.18);transform:translateY(-6px);transition:transform .18s ease,opacity .18s ease}
+#hibr-modal-overlay .card h3{margin:0 0 10px 0;font-size:1.15rem}
+#hibr-modal-overlay label{display:block;margin-top:10px;margin-bottom:6px;font-weight:600;color:var(--muted)}
+#hibr-modal-overlay input[type="text"],#hibr-modal-overlay input[type="file"],#hibr-modal-overlay textarea,#hibr-modal-overlay select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(250,250,250,0.96));box-sizing:border-box;color:var(--text);font-size:0.95rem}
+#hibr-modal-overlay textarea{min-height:100px;resize:vertical}
+#hibr-modal-overlay .muted{color:var(--muted);font-size:0.9rem}
+#hibr-modal-overlay .file-row{display:flex;align-items:center;gap:10px}
+#hibr-modal-overlay .file-row .file-name{font-size:0.95rem;color:var(--muted)}
+#hibr-modal-overlay .btn-ghost.file-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px}
+#hibr-modal-overlay .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+#hibr-modal-overlay .actions .btn{padding:10px 14px;border-radius:10px}
+
+/* responsive modal small screens */
+@media (max-width:520px){ #hibr-modal-overlay .card{border-radius:12px;padding:12px} #hibr-modal-overlay textarea{min-height:80px} }
+
+/* Make file preview videos very small inside modals */
+#hibr-modal-overlay #filePreview video, #filePreview video {
+  width: 160px !important;
+  height: 90px !important;
+  max-width: 160px !important;
+  max-height: 90px !important;
+}
+
+/* MOOC viewer helpers */
+.mooc-top-left{display:flex;align-items:center;gap:8px}
+.player-content{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#fff}
+.mooc-controls{margin-top:12px;display:flex;gap:8px;justify-content:flex-end}
+.mt-12{margin-top:12px}
+/* common utilities used across dashboard pages to avoid inline styles */
+.mt-6{margin-top:6px}
+.mt-8{margin-top:8px}
+.mt-10{margin-top:10px}
+.mt-18{margin-top:18px}
+.fs-22{font-size:22px}
+.fw-700{font-weight:700}
+.flex-justify-end{display:flex;justify-content:flex-end}
+.flex-gap-8{display:flex;gap:8px}
+
+/* MOOC visual tweaks */
+.mooc-main{flex:1;background:linear-gradient(180deg,#0f1724,#071022);border-radius:8px;padding:12px;display:flex;flex-direction:column;color:#e6eef8}
+.mooc-top{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,0.04);background:transparent}
+.btn-back{margin-left:8px}
+
+/* Creator home stats */
+#homeStats .stat-card{display:inline-block;background:var(--card);padding:10px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,0.04);min-width:110px;text-align:center}
+#statsRadial{width:110px;height:110px;position:relative}
+#statsRadial svg{display:block}
+#statsRadial > div{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+#statsList{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+#activitySummary{font-size:13px;color:var(--muted);margin-top:8px}
+/* additional small utilities used by creator home stats */
+.flex-1{flex:1}
+.home-stats-row{display:flex;gap:16px;align-items:center}
+.flex-wrap-gap{display:flex;gap:10px;flex-wrap:wrap}
+
+/* Courses grid (creator view) */
+#coursesAvailable .courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.course-card{display:flex;flex-direction:column;justify-content:space-between;min-height:140px}
+.course-card-body h4{margin:0 0 6px 0}
+.course-card-actions{display:flex;gap:8px;justify-content:flex-start;margin-top:10px}
+.course-card p.muted{margin:6px 0 0 0}
+
+/* course head */
+.course-head{display:flex;align-items:center;gap:10px}
+.course-thumb{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,#eef2ff,#dbeafe);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--text);font-size:18px}
+.course-meta h4{margin:0}
+.course-meta .muted{margin-top:4px}
+
+/* rating stars */
+.stars{color:#f59e0b;font-size:14px;letter-spacing:1px}
+.course-rating .muted{color:var(--muted);font-size:13px}
+
+/* small icon spacing inside buttons */
+.btn .icon, .btn-ghost .icon{margin-inline-start:8px;opacity:0.9}
+
+/* Progress bar for course cards */
+.course-progress{height:8px;background:#eef2f7;border-radius:999px;overflow:hidden;margin-top:8px;display:block;width:100%;box-sizing:border-box}
+.course-progress-bar{height:100%;background:linear-gradient(90deg,#06b6d4,#06b6d4);width:0%;transition:width 400ms ease}
+
+/* larger progress for My Courses (long style) */
+.course-progress-large{height:12px;background:#f1f5f9;border-radius:999px;overflow:hidden;margin-top:12px;width:100%;box-sizing:border-box}
+.course-progress-large .course-progress-bar{height:100%;background:linear-gradient(90deg,#06b6d4,#10b981);width:0%;transition:width 500ms cubic-bezier(.2,.9,.2,1)}
+.course-progress-large + .progress-label{margin-top:8px;font-size:13px;color:var(--muted)}
+.course-card .muted[style*="font-size:12px"]{margin-top:6px}
+
+/* Make aside content fill the available width inside the two-column layout */
+.grid-two aside{display:flex;flex-direction:column;gap:12px}
+.grid-two aside .card{width:100%;box-sizing:border-box}
+.grid-two aside .muted{max-width:100%}
+
+/* For creator role: make cards slightly tinted like the sidebar but lighter */
+body[data-role="creator"] .card{
+  background: linear-gradient(180deg, rgba(59,16,83,0.03), rgba(34,7,51,0.01)), var(--card) !important;
+  border:1px solid rgba(59,16,83,0.06);
+}
+
+/* Darken cards that live in the main column to increase contrast (creator) */
+body[data-role="creator"] .dash-main .card{
+  background: linear-gradient(180deg, rgba(59,16,83,0.08), rgba(34,7,51,0.04)), var(--card) !important;
+  border:1px solid rgba(59,16,83,0.12);
+  box-shadow:0 10px 30px rgba(2,6,23,0.08);
+}
+
+/* Make the big parent container cards (main column) very light so inner cards stand out */
+body[data-role="creator"] .grid-two > div > .card{
+  background: var(--card-parent) !important;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+  border:1px solid rgba(2,6,23,0.03);
+}
+
+/* keep recent activity list original compact style */
+.recent-original-item{padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04)}
+
