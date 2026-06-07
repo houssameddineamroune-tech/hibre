@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لوحة المبدع — حِبر</title>
+  <link href="../../assets/css/main.css" rel="stylesheet" />
+  <link href="../../assets/css/dashboard.css" rel="stylesheet" />
+</head>
+<body class="rtl" data-role="creator">
+  <div class="dash-shell">
+    <aside class="dash-sidebar">
+      <div class="brand"><img id="logo_hibre" src="../../logo.png" alt="حِبر"/><div class="fw-700 mt-6">حِبر</div></div>
+      <nav class="nav">
+        <a href="creator.html" class="active">الرئيسية</a>
+        <a href="#profile">ملفي الشخصي</a>
+        <a href="#gallery">معرض الأعمال</a>
+        <a href="#services">خدماتي</a>
+        <a href="#courses">الدورات</a>
+        <a href="#my-courses" id="nav-my-courses">دوراتي</a>
+        <a href="#incubator">الاحتضان</a>
+        <a href="#opportunities">الفرص</a>
+        <a href="#messages">الرسائل</a>
+      </nav>
+      <div class="mt-18">
+        <button class="btn-logout" onclick="DashAuth.logout()">تسجيل الخروج</button>
+      </div>
+    </aside>
+
+    <main class="dash-main">
+      <header class="dash-topbar">
+        <div>
+          <h2>لوحة المبدع</h2>
+          <small class="muted">مرحباً، <span data-user-name></span></small>
+        </div>
+        <div class="controls">
+          <button id="dashToggle" class="btn-ghost" aria-label="قائمة">☰</button>
+          <button data-toggle-theme class="btn-ghost">تبديل السمة</button>
+        </div>
+      </header>
+
+      <!-- Dashboard summary cards removed per request -->
+
+      <section class="grid-two">
+        <div>
+          <div id="homeStats" class="card">
+            <h3>إحصائيات الحساب</h3>
+            <div class="home-stats-row">
+              <div id="statsRadial"></div>
+              <div class="flex-1">
+                <div id="statsList"></div>
+                <div id="activitySummary"></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="profile" class="card">
+            <div class="profile">
+                <div class="avatar" id="profileAvatar">م</div>
+                <div>
+                  <div class="fw-700" id="profileName" data-user-name></div>
+                  <div class="muted" id="profileEmail"></div>
+                  <div class="muted" id="profileBio">نبذة سريعة عنك</div>
+                  <div class="mt-8"><button id="editProfileBtn" class="btn">تعديل الملف</button></div>
+                </div>
+              </div>
+          </div>
+
+          <div id="gallery" class="card mt-12">
+            <h3>معرض الأعمال</h3>
+            <p class="muted">أضف كتباً، صوراً، فيديوهات ومشاريعك الإبداعية.</p>
+            <div class="mt-10"><button id="addWorkBtn" class="btn">أضف عمل جديد</button></div>
+            <div id="worksList" class="mt-12"></div>
+          </div>
+
+          <div id="services" class="card mt-12">
+            <h3>خدماتي</h3>
+            <p class="muted">إنشاء وتعديل وحذف الخدمات التي تقدمها.</p>
+            <div class="mt-10"><button id="addServiceBtn" class="btn">إنشاء خدمة جديدة</button></div>
+            <div id="servicesList" class="mt-12"></div>
+          </div>
+
+          <div id="courses" class="card mt-12 hidden">
+            <h3>الدورات المتاحة</h3>
+            <p class="muted">الدورات المنشورة من قبل المدربين. يمكنك التسجيل ومتابعتها.</p>
+            <div class="mt-10"><div id="coursesAvailable"></div></div>
+          </div>
+
+          <div id="my-courses" class="card mt-12 hidden">
+            <h3>دوراتي الخاصة</h3>
+            <div class="muted">الدورات التي قمت بالتسجيل بها</div>
+            <div id="myCoursesList" class="mt-8"></div>
+          </div>
+          
+          <div id="incubator" class="card mt-12">
+            <h3>الاحتضان — تقديم المشروع</h3>
+            <p class="muted">قدّم مشروعك لطلب احتضان من الحاضنات والمؤسسات. ستظهر الحالة هنا ويمكنك متابعة حالتها.</p>
+            <div class="mt-10 flex-wrap-gap">
+              <button id="submitProjectBtn" class="btn">قدّم مشروعك</button>
+            </div>
+            <div id="myProjectsList" class="mt-12"></div>
+          </div>
+
+          <div id="opportunities" class="card mt-12">
+            <h3>الفرص المنشورة من المؤسسات</h3>
+            <p class="muted">الفرص التي تنشرها المؤسسات والمنظمات على المنصة.</p>
+            <div id="oppsGlobalList" class="mt-12"></div>
+          </div>
+        </div>
+
+        <aside>
+          <!-- Quick actions and recent activity -->
+          <div class="card">
+            <h4>إجراءات سريعة</h4>
+            <div class="mt-6 flex-wrap-gap">
+              <button id="quickAddWork" class="btn">أضف عمل</button>
+              <button id="quickAddService" class="btn-ghost">إنشاء خدمة</button>
+              <button id="quickSubmitProject" class="btn">قدّم مشروع</button>
+              <button id="quickCourses" class="btn-ghost">دوراتي</button>
+            </div>
+          </div>
+
+          <div class="card mt-12">
+            <h4>آخر الأنشطة</h4>
+            <div id="recentActivityList" class="mt-8">
+              <div class="muted">لا توجد نشاطات بعد</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="../../assets/js/dashboard.js"></script>
+  <script src="../../assets/js/incubator.js"></script>
+  <script src="../../assets/js/creator.js"></script>
+  <script>
+    // guard page for creator role
+    if(!DashAuth.ensureRole(['creator'])){ /* access denied handled */ }
+  </script>
+</body>
+</html>
