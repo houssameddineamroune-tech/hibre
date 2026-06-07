@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>إنشاء حساب — حِبر</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body>
+
+  <div class="auth-page">
+    <!-- Left Panel -->
+    <div class="auth-panel">
+      <a href="../index.html">
+        <img src="../logo.png" alt="حِبر" class="brand-logo" />
+      </a>
+      <div class="auth-panel-content">
+        <h2>انضم إلى<br /><span style="color:#c39b3a;">مجتمع حِبر</span></h2>
+        <ul class="auth-panel-features">
+          <li>
+            <div class="auth-feature-icon">✨</div>
+            <span>وصول فوري لمئات الدورات الإبداعية</span>
+          </li>
+          <li>
+            <div class="auth-feature-icon">🚀</div>
+            <span>احتضان مشروعك من الفكرة إلى المنتج</span>
+          </li>
+          <li>
+            <div class="auth-feature-icon">💰</div>
+            <span>بع أعمالك لجمهور واسع وحقّق دخلاً</span>
+          </li>
+        </ul>
+      </div>
+      <p class="auth-panel-foot">© 2026 حِبر. جميع الحقوق محفوظة.</p>
+    </div>
+
+    <!-- Form Side -->
+    <div class="auth-form-side">
+      <div class="auth-form-box">
+        <div class="auth-logo-mobile">
+          <a href="../index.html"><img src="../logo.png" alt="حِبر" style="height:46px;" /></a>
+        </div>
+
+        <h1>إنشاء حساب جديد</h1>
+        <p class="sub">لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
+
+        <form data-form="register" data-redirect="../index.html">
+          <div class="form-group">
+            <label class="form-label">الاسم الكامل</label>
+            <div class="form-input-wrap">
+              <span class="form-input-icon">👤</span>
+              <input name="name" type="text" class="form-input" placeholder="اسمك الكامل" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">البريد الإلكتروني</label>
+            <div class="form-input-wrap">
+              <span class="form-input-icon">✉</span>
+              <input name="email" type="email" class="form-input" placeholder="name@example.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">كلمة المرور</label>
+            <div class="form-input-wrap">
+              <span class="form-input-icon">🔒</span>
+              <input id="regpass" name="password" type="password" class="form-input" placeholder="6 أحرف على الأقل" required minlength="6" style="padding-left:60px;" />
+              <button type="button" class="form-input-end toggle-pass" data-target="regpass">إظهار</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">دورك في المنصة</label>
+            <div class="form-input-wrap">
+              <span class="form-input-icon">💼</span>
+              <select name="role" class="form-select">
+                <option value="creator">مبدع</option>
+                <option value="trainer">مدرّب</option>
+                <option value="incubator">حاضن أعمال</option>
+                <option value="org">مؤسسة</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">إنشاء الحساب</button>
+        </form>
+
+        <div style="margin-top:12px; text-align: right;">
+          <button type="button" class="btn btn-outline open-pay-btn" id="showPaymentPreview">عرض نافذة الدفع</button>
+        </div>
+
+        <p class="form-footer">
+          بإنشاء حساب، أنت توافق على <a href="#">الشروط والأحكام</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <button id="backToTop" aria-label="العودة للأعلى">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
+    </svg>
+  </button>
+
+  <!-- Payment modal -->
+  <div class="payment-modal" aria-hidden="true">
+    <div class="payment-modal-inner" role="dialog" aria-modal="true" aria-labelledby="pm-title">
+      <header class="payment-header">
+        <h3 id="pm-title">نافذة الدفع</h3>
+        <button class="pm-close" aria-label="إغلاق">✕</button>
+      </header>
+      <div class="payment-body">
+        <div class="payment-summary">
+          <div>المنتج: <strong>خطة المبدع — شهر واحد</strong></div>
+          <div style="display:flex;gap:8px;align-items:center;justify-content:flex-start;">
+            <label style="font-weight:600;margin-right:8px;">المبلغ:</label>
+            <input id="pm-amount" name="amount" type="number" inputmode="decimal" min="0" step="0.01" value="299" style="width:120px;padding:8px;border-radius:6px;border:1px solid rgba(11,41,64,0.12);" />
+            <span style="margin-right:6px;font-weight:700;">دج</span>
+          </div>
+        </div>
+
+        <form id="paymentPreviewForm" class="payment-form">
+          <label>رقم البطاقة</label>
+          <input id="pm-card" name="card" inputmode="numeric" autocomplete="cc-number" type="text" placeholder="4555 4555 4555 4555" />
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <input id="pm-exp" name="exp" inputmode="numeric" autocomplete="cc-exp" type="text" placeholder="MM/YY" style="flex:1" />
+            <input id="pm-cvc" name="cvc" inputmode="numeric" autocomplete="cc-csc" type="text" placeholder="CVC" style="width:90px" />
+          </div>
+        </form>
+      </div>
+      <footer class="payment-footer">
+        <button class="pm-cancel btn btn-ghost">إغلاق</button>
+        <button id="pmPayBtn" type="submit" form="paymentPreviewForm" class="btn btn-primary">دفع</button>
+      </footer>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

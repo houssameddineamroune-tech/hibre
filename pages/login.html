@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تسجيل الدخول — حِبر</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body>
+
+  <div class="auth-page">
+    <!-- Left Panel -->
+    <div class="auth-panel">
+      <a href="../index.html">
+        <img id="logo_hibre" src="../logo.png" alt="حِبر" class="brand-logo" />
+      </a>
+      <div class="auth-panel-content">
+        <h2>مرحباً بعودتك<br /><span style="color:#c39b3a;">إلى حِبر</span></h2>
+        <p>منصتك الإبداعية تنتظرك. سجّل دخولك لمتابعة رحلتك الإبداعية.</p>
+      </div>
+      <p class="auth-panel-foot">© 2026 حِبر. جميع الحقوق محفوظة.</p>
+    </div>
+
+    <!-- Form Side -->
+    <div class="auth-form-side">
+      <div class="auth-form-box">
+        <div class="auth-logo-mobile">
+          <a href="../index.html"><img src="../logo.png" alt="حِبر" style="height:46px;" /></a>
+        </div>
+
+        <h1>تسجيل الدخول</h1>
+        <p class="sub">ليس لديك حساب؟ <a href="register.html">إنشاء حساب</a></p>
+
+        <form data-form="login" data-redirect="../index.html">
+          <div class="form-group">
+            <label class="form-label">البريد الإلكتروني</label>
+            <div class="form-input-wrap">
+              <span class="form-input-icon">✉</span>
+              <input id="email" name="email" type="email" class="form-input" placeholder="name@example.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <a href="forgot.html" class="form-forgot">نسيت كلمة المرور؟</a>
+              <label class="form-label" style="margin:0;">كلمة المرور</label>
+            </div>
+            <div class="form-input-wrap">
+              <span class="form-input-icon">🔒</span>
+              <input id="password" name="password" type="password" class="form-input" placeholder="••••••••" required style="padding-left:60px;" />
+              <button type="button" class="form-input-end toggle-pass" data-target="password">إظهار</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">دخول</button>
+        </form>
+
+        <div style="margin-top:12px" class="card">
+          <h4>حسابات تجريبية</h4>
+          <p class="muted" style="margin:6px 0 0 0">استخدم أحد الحسابات التجريبية للتجربة المحلية:</p>
+          <ul style="margin:8px 0 0 14px">
+            <li>المبدع: <strong>creator@hibr.local</strong> / password</li>
+            <li>المالك: <strong>owner@hibr.local</strong> / password</li>
+            <li>المدير: <strong>admin@hibr.local</strong> / password</li>
+            <li>المدرب: <strong>coach@hibr.local</strong> / password</li>
+            <li>المرشد: <strong>mentor@hibr.local</strong> / password</li>
+            <li>المؤسسة: <strong>org@hibr.local</strong> / password</li>
+          </ul>
+        </div>
+
+        <p class="form-footer">
+          بتسجيل الدخول، أنت توافق على <a href="#">سياسة الخصوصية</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <button id="backToTop" aria-label="العودة للأعلى">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
+    </svg>
+  </button>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

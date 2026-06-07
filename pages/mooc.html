@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>عارض الدورة — حِبر</title>
+  <link href="../assets/css/main.css" rel="stylesheet" />
+  <link href="../assets/css/dashboard.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+  <style>
+    body.mooc{height:100vh;display:flex;flex-direction:column}
+    .mooc-top{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid rgba(0,0,0,0.06);background:#fff}
+    .mooc-shell{flex:1;display:flex;gap:12px;padding:18px;overflow:hidden}
+    .mooc-main{flex:1;background:#f9fafb;border-radius:8px;padding:12px;display:flex;flex-direction:column}
+    .mooc-player{flex:1;display:flex;align-items:center;justify-content:center;background:#000;border-radius:6px;overflow:hidden}
+    .mooc-sidebar{width:360px;max-width:40%;background:#fff;border-radius:8px;padding:12px;overflow:auto}
+    .lesson-item{padding:10px;border-bottom:1px solid rgba(0,0,0,0.04);display:flex;justify-content:space-between;align-items:center}
+    .btn-back{margin-left:8px}
+  </style>
+</head>
+<body class="rtl mooc" data-role="mooc-view">
+  <div class="mooc-top">
+    <div class="mooc-top-left">
+      <button id="backBtn" class="btn btn-back">رجوع</button>
+      <h2 id="courseTitle">الدورة</h2>
+    </div>
+    <div>
+      <small id="courseMeta" class="muted"></small>
+    </div>
+  </div>
+
+  <div class="mooc-shell">
+    <main class="mooc-main">
+      <div id="playerWrapper" class="mooc-player">
+        <div id="playerContent" class="player-content">تحميل المحتوى...</div>
+      </div>
+      <div class="mooc-controls">
+        <button id="prevLesson" class="btn-ghost">السابق</button>
+        <button id="markDone" class="btn">علم الانتهاء</button>
+        <button id="nextLesson" class="btn">التالي</button>
+      </div>
+    </main>
+
+    <aside class="mooc-sidebar">
+      <h4>الدروس</h4>
+      <div id="lessonsList"></div>
+      <h4 class="mt-12">الموارد</h4>
+      <div id="resourcesList" class="muted">لا موارد</div>
+    </aside>
+  </div>
+
+  <script src="../assets/js/dashboard.js"></script>
+  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+  <script src="../assets/js/mooc.js"></script>
+</body>
+</html>
